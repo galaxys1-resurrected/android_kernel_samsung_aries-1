@@ -122,6 +122,9 @@ EXPORT_SYMBOL(sec_get_param_value);
 bool is_telus_galaxys4g;
 #endif
 
+bool dynbigmem_control;
+EXPORT_SYMBOL(dynbigmem_control);
+
 #define KERNEL_REBOOT_MASK      0xFFFFFFFF
 #define REBOOT_MODE_FAST_BOOT		7
 
@@ -389,6 +392,12 @@ static struct s5p_media_device aries_media_devs[] = {
 		.paddr = 0,
 	},
 };
+
+struct s5p_media_device* aries_get_media_devs (int* nr_devs) {
+	*nr_devs=ARRAY_SIZE(aries_media_devs);
+	return aries_media_devs;
+}
+EXPORT_SYMBOL(aries_get_media_devs);
 
 #ifdef CONFIG_CPU_FREQ
 static struct s5pv210_cpufreq_voltage smdkc110_cpufreq_volt[] = {
